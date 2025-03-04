@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ramandita Saguna - AI Engineering Student & Tech Innovator Portfolio">
+    <title>Ramandita Saguna - AI Engineering Student & Tech Innovator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0a192f;
+            --secondary-bg: #172a45;
+            --accent: #64ffda;
+            --text-primary: #ccd6f6;
+            --text-secondary: #8892b0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent);
+            z-index: 1000;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            background: var(--secondary-bg);
+            border: 2px solid var(--accent);
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+        }
+
+        .contact-info a {
+            color: var(--text-primary);
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--accent);
+        }
+
+        .cta {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cta:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+
+        .section-header i {
+            margin-right: 1rem;
+            color: var(--accent);
+        }
+
+        /* Skill Bars */
+        .skill-bar {
+            background: var(--secondary-bg);
+            border-radius: 4px;
+            margin: 1rem 0;
+            padding: 0.5rem;
+        }
+
+        .skill-progress {
+            height: 10px;
+            background: var(--accent);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Project Cards */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--secondary-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.5rem 0.5rem 0 0;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            z-index: 1001;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: var(--secondary-bg);
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .sponsorship-counter {
+            font-size: 2rem;
+            color: var(--accent);
+            margin: 2rem 0;
+        }
+
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .certification-card {
+            background: var(--secondary-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cert-icon {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-right: 1.5rem;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .cert-details {
+            flex: 1;
+        }
+
+        .cert-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .cert-date {
+            color: var(--text-secondary);
+        }
+
+        .cert-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .certification-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .cert-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" style="width: 0%"></div>
+    
+    <nav>
+        <div class="nav-container">
+            <h2 class="highlight">RS</h2>
+            <div class="nav-links">
+                <a href="#summary">Summary</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-img" aria-label="Profile picture placeholder"></div>
+            <h1>Ramandita Saguna</h1>
+            <h2>AI Engineering Student</h2>
+            <div class="contact-info">
+                <a href="mailto:ramanditasaguna@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:+628129436395" aria-label="Phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="https://linkedin.com/in/ramandita-saguna" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/ramanditasaguna" target="_blank" rel="noopener" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <button class="cta">Download PDF CV</button>
+            <div class="sponsorship-counter">
+                <span id="counter">0</span>M+ IDR Secured
+            </div>
+        </div>
+    </section>
+
+    <section id="summary">
+        <div class="section-header" onclick="toggleSection('summary-content')">
+            <i class="fas fa-user"></i>
+            <h2>Summary</h2>
+        </div>
+        <div id="summary-content" class="section-content">
+            <p>Results-driven college student with a passion for critical thinking and adaptability. Proven track record in various events and organizations. Committed to continuous growth, leveraging problem-solving skills to drive innovation and achieve strategic goals. <span class="highlight">Successfully secured sponsorship funding with an estimated total exceeding 200+ million IDR.</span> Currently seeking opportunities and resources for personal and professional development.</p>
+        </div>
+    </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <div class="section-header" onclick="toggleSection('education-content')">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>Education</h2>
+            </div>
+            <div id="education-content" class="section-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Institut Teknologi Sepuluh Nopember (ITS)</h3>
+                        <p>Undergraduate, Artificial Intelligence Engineering</p>
+                        <p class="highlight">2023-2027</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>SMA Negeri 51 Jakarta</h3>
+                        <p>MIPA</p>
+                        <p class="highlight">2020-2023</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="section-header" onclick="toggleSection('skills-content')">
+                <i class="fas fa-laptop-code"></i>
+                <h2>Skills</h2>
+            </div>
+            <div id="skills-content" class="section-content">
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>Bubble.io</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-progress" data-level="90%"></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>Swift</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-progress" data-level="75%"></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>Python</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-progress" data-level="85%"></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>Web Development</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-progress" data-level="80%"></div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="section-header" onclick="toggleSection('experience-content')">
+                <i class="fas fa-briefcase"></i>
+                <h2>Experiences</h2>
+            </div>
+            <div id="experience-content" class="section-content">
+                <div class="project-grid">
+                    <div class="project-card" onclick="openModal('dpd')">
+                        <h3>Sekretariat Jenderal DPD RI</h3>
+                        <p>Information Systems Management Section</p>
+                        <div class="tag">IT Management</div>
+                        <div class="tag">Systems Improvement</div>
+                    </div>
+                </div>
+    
+                <h3 style="margin-top: 2rem">Event & Organization Experiences</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Expert Staff of Sponsorships - TEDx ITS 2025</h4>
+                        <p>Formulated sponsorship strategies for large-scale event</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Head of Sponsorships - MABACUP ITS 2024</h4>
+                        <p>Secured <span class="highlight">25M+ IDR</span> sponsorship deals</p>
+                    </div>
+                    <!-- Add more timeline items following the same pattern -->
+                </div>
+            </div>
+        </section>
+    
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="section-header" onclick="toggleSection('projects-content')">
+                <i class="fas fa-code-branch"></i>
+                <h2>Projects</h2>
+            </div>
+            <div id="projects-content" class="section-content">
+                <div class="project-grid">
+                    <div class="project-card" onclick="openModal('onlithings')">
+                        <h3>OnliThings.com</h3>
+                        <p>E-ticket Platform for School Events</p>
+                        <div class="tag">Acquired</div>
+                        <div class="tag">User-First Design</div>
+                    </div>
+    
+                    <div class="project-card" onclick="openModal('onlifood')">
+                        <h3>OnliFood.com</h3>
+                        <p>F&B Solution Platform</p>
+                        <div class="tag">Innovative</div>
+                        <div class="tag">SaaS</div>
+                    </div>
+    
+                    <div class="project-card" onclick="openModal('pilkada')">
+                        <h3>sambutpilkada.com</h3>
+                        <p>Election Social Media Platform</p>
+                        <div class="tag">Acquired</div>
+                        <div class="tag">Social Media</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Modals -->
+        <div id="onlithings-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal('onlithings')">&times;</span>
+                <h3>OnliThings.com</h3>
+                <p class="highlight">Acquired Ticket Platform</p>
+                <ul>
+                    <li>School event ticket management system</li>
+                    <li>User-friendly interface for ticket buyers and organizers</li>
+                    <li>Integrated payment processing system</li>
+                </ul>
+                <div class="tags">
+                    <div class="tag">Bubble.io</div>
+                    <div class="tag">Web Development</div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Add similar modals for other projects -->
+    
+    <!-- Others Section -->
+    <section id="others">
+        <div class="section-header" onclick="toggleSection('others-content')">
+            <i class="fas fa-certificate"></i>
+            <h2>Certifications & Licenses</h2>
+        </div>
+        <div id="others-content" class="section-content">
+            <div class="certification-grid">
+                <!-- TOEFL Card -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-file-certificate"></i>
+                    </div>
+                    <div class="cert-details">
+                        <h3>TOEFL ITP</h3>
+                        <div class="cert-meta">
+                            <span class="cert-date">March 2023</span>
+                            <span class="cert-score highlight">Score: 547</span>
+                        </div>
+                        <p class="cert-description">
+                            English proficiency certification for academic purposes
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Driving License Card -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                    <div class="cert-details">
+                        <h3>Driving License</h3>
+                        <div class="cert-meta">
+                            <span class="cert-date">Issued 2023</span>
+                            <span class="highlight">Class A & C</span>
+                        </div>
+                        <p class="cert-description">
+                            Official Indonesian driving license for private vehicles and motorcycles
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-header">
+                <i class="fas fa-envelope"></i>
+                <h2>Contact</h2>
+            </div>
+            <div class="section-content">
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> South Jakarta, Indonesia</p>
+                    <p><i class="fas fa-phone"></i> (+62) 812-9436-395</p>
+                    <p><i class="fas fa-envelope"></i> ramanditasaguna@gmail.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/ramandita-saguna" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/ramanditasaguna" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+    
+        <footer>
+            <p>&copy; <span id="current-year"></span> Ramandita Saguna. All rights reserved.</p>
+        </footer>
+    
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            themeToggle.querySelector('i').classList.toggle('fa-sun');
+        });
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.width = `${scrolled}%`;
+        });
+
+        // Dynamic Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Sponsorship Counter
+        const animateCounter = () => {
+            const counter = document.getElementById('counter');
+            let count = 0;
+            const target = 200;
+            const increment = target / 100;
+            
+            const updateCount = () => {
+                if(count < target) {
+                    count += increment;
+                    counter.textContent = Math.floor(count);
+                    requestAnimationFrame(updateCount);
+                }
+            }
+            updateCount();
+        }
+
+        // Initialize when counter is in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    animateCounter();
+                }
+            });
+        });
+        observer.observe(document.querySelector('.sponsorship-counter'));
+
+        // Section Toggle
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('collapsed');
+        }
+
+        // Modal Handling
+        function openModal(projectId) {
+            const modal = document.getElementById(`${projectId}-modal`);
+            modal.style.display = 'block';
+        }
+
+        function closeModal(projectId) {
+            const modal = document.getElementById(`${projectId}-modal`);
+            modal.style.display = 'none';
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            if(event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Skill Animation
+        const animateSkills = () => {
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                const width = bar.getAttribute('data-level');
+                bar.style.width = width;
+            });
+        };
+
+        // Initialize skill animations
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    animateSkills();
+                }
+            });
+        });
+        document.querySelectorAll('.skill-bar').forEach(el => skillObserver.observe(el));
+    </script>
+</body>
+</html>
